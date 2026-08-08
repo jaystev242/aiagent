@@ -4,7 +4,7 @@ def main():
     from dotenv import load_dotenv
     import argparse
     from prompts import system_prompt
-    from call_functions import available_functions
+    from call_functions import available_functions, call_function
 
     load_dotenv()
     api_key = os.environ.get("OPENROUTER_API_KEY")
@@ -42,8 +42,11 @@ def main():
 
     if message.tool_calls:
         for tool_call in message.tool_calls:
-            function_args = json.loads(tool_call.function.arguments or "{}")
-            print(f"Calling function: {tool_call.function.name}({function_args})")
+            result_message = call_function(tool_call, args.verbose)
+            if result_message["content"] == None or result_message["content"] == "":
+                raise Exception("No tool call content")
+            if args.verbose:
+                print(f"-> {result_message['content']}")
     else:
             print(response.choices[0].message.content)
 
