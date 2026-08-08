@@ -28,12 +28,9 @@ schema_get_file_content = {
         "name": "get_file_content",
         "description": "Gets the file content listed at a specific directory and reads content, specifying if truncated",
         "parameters": {
+            "required": ["file_path"],
             "type": "object",
             "properties": {
-                "working_directory": {
-                    "type": "string",
-                    "description": "Working directory",
-                },
                 "file_path": {
                     "type": "string",
                     "description": "path to file",

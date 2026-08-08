@@ -25,12 +25,9 @@ schema_write_file = {
         "name": "write_file",
         "description": "Writes specified content to file",
         "parameters": {
+            "required": ["file_path", "content"],
             "type": "object",
             "properties": {
-                "working_directory": {
-                    "type": "string",
-                    "description": "Working directory",
-                },
                 "file_path": {
                     "type": "string",
                     "description": "path to file",
