@@ -30,3 +30,29 @@ def run_python_file(
                     return string
     except OSError as e:
         return f'Error: executing Python file: {e}'
+
+
+schema_run_python_file = {
+    "type": "function",
+    "function": {
+        "name": "run_python_file",
+        "description": "Runs specified python file in working directory/file path",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "working_directory": {
+                    "type": "string",
+                    "description": "Working directory",
+                },
+                "file_path": {
+                    "type": "string",
+                    "description": "path to file",
+                },
+                "args": {
+                    "type": "list[string]",
+                    "description": "list of arguments to be passed to function",
+                },
+            },
+        },
+    },
+}

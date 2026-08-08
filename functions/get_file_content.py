@@ -20,3 +20,25 @@ def get_file_content(working_directory: str, file_path: str) -> str:
             return content
     except OSError as e:
         return f'Error: {e}'
+
+
+schema_get_file_content = {
+    "type": "function",
+    "function": {
+        "name": "get_file_content",
+        "description": "Gets the file content listed at a specific directory and reads content, specifying if truncated",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "working_directory": {
+                    "type": "string",
+                    "description": "Working directory",
+                },
+                "file_path": {
+                    "type": "string",
+                    "description": "path to file",
+                },
+            },
+        },
+    },
+}
